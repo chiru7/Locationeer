@@ -21,6 +21,13 @@ build:
     # Read more about steps on our dev center:
     # http://devcenter.wercker.com/docs/steps/index.html
     steps:
+        - script:
+          name: set nodejs emvironment
+          code: |
+            sudo apt-get update
+            sudo apt-get install -y nodejs npm
+            sudo npm install
+
         - bundle-install
 
         - script:
@@ -29,7 +36,7 @@ build:
               echo "ruby version $(ruby --version) running!"
               echo "from location $(which ruby)"
               echo -p "gem list: $(gem list)"
-              
+
         - script:
             name: bundle - nokogiri use sys lib
             code: bundle config build.nokogiri --use-system-libraries
