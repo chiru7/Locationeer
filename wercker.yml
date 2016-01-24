@@ -25,8 +25,8 @@ build:
         # which improves build execution time of
         # future builds
         - script:
-            name: bundle - nokogiri use sys lib
-            code: bundle config build.nokogiri --use-system-libraries
+          name: Bundler setting
+          code: bundle config build.nokogiri --use-system-libraries
 
         - bundle-install
         - script:
