@@ -21,12 +21,12 @@ build:
     # Read more about steps on our dev center:
     # http://devcenter.wercker.com/docs/steps/index.html
     steps:
-        - script:
-          name: set nodejs emvironment
-          code: |
-            sudo apt-get update
-            sudo apt-get install -y nodejs npm
-            sudo npm install
+        # - script:
+        #   name: set nodejs emvironment
+        #   code: |
+        #     sudo apt-get update
+        #     sudo apt-get install -y nodejs npm
+        #     sudo npm install
 
         - bundle-install
 
