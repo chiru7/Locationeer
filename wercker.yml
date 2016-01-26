@@ -22,6 +22,15 @@ build:
     # http://devcenter.wercker.com/docs/steps/index.html
     steps:
         - script:
+            name: echo ruby information
+            code: |
+                echo "ruby version $(ruby --version) running!"
+                echo "from location $(which ruby)"
+                echo -p "gem list: $(gem list)"
+
+        - bundle-install
+
+        - script:
             name: Nodejs install
             code: |
               sudo apt-get update -y
@@ -31,8 +40,6 @@ build:
         - script:
             name: bundle - nokogiri use sys lib
             code: bundle config build.nokogiri --use-system-libraries
-
-        - bundle-install
 
         - script:
             name: rspec
