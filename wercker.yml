@@ -29,14 +29,20 @@ build:
             name: fix nokogiri build
             code: bundle config build.nokogiri --use-system-libraries
 
+        # - script:
+        #     name: set nodejs emvironment
+        #     code: |
+        #       sudo apt-get install nodejs
+        #       node --version
+        #       sudo npm config set registry http://registry.npmjs.org/
+        #       sudo npm update
+        #       sudo npm install
         - script:
             name: set nodejs emvironment
             code: |
-              sudo apt-get install nodejs
-              node --version
-              sudo npm config set registry http://registry.npmjs.org/
-              sudo npm update
-              sudo npm install
+              sudo apt-get update
+              sudo apt-get -y install nodejs npm
+              sudo update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
 
         - bundle-install
 
