@@ -32,12 +32,6 @@ build:
         - script:
             name: set nodejs emvironment
             code: |
-
-              # nodejsの最新版を入れるための設定
-              sudo apt-get install software-properties-common
-              sudo add-apt-repository -y ppa:chris-lea/node.js
-              # nodejsの最新版を入れるための設定ここまで
-
               sudo apt-get install nodejs
               node --version
               sudo npm config set registry http://registry.npmjs.org/
