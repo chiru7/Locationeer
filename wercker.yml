@@ -22,14 +22,22 @@ build:
             name: fix nokogiri build
             code: bundle config build.nokogiri --use-system-libraries
 
-        - bundle-install
-
         - script:
-            name: install node
+            name: set nodejs emvironment
             code: |
-                curl -sL https://deb.nodesource.com/setup_5.x | bash -
-                apt-get install -y nodejs
 
+              # nodejsの最新版を入れるための設定
+              sudo apt-get install software-properties-common
+              sudo add-apt-repository -y ppa:chris-lea/node.js
+              # nodejsの最新版を入れるための設定ここまで
+
+              sudo apt-get install nodejs
+              node --version
+              sudo npm config set registry http://registry.npmjs.org/
+              sudo npm update
+              sudo npm install
+
+        - bundle-install
 
         - script:
             name: rspec
