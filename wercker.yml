@@ -54,11 +54,11 @@ build:
               sudo apt-get update
               sudo apt-get -y install nodejs npm
 
-        - npm-install:
-            package: jshint
-            strict-ssl: false
-
-        - npm-test
+        # - npm-install:
+        #     package: jshint
+        #     strict-ssl: false
+        #
+        # - npm-test
 
         - bundle-install
 
