@@ -35,17 +35,17 @@ default: &default
 development:
   <<: *default
   database: locationeer_development
-  username: test_name
-  password: test_pa55w0rD
+  username: test
+  password: +e5+-pa55w0rD
 
 test:
   <<: *default
   database: locationeer_test
-  username: test_name
-  password: test_pa55w0rD
+  username: test
+  password: +e5+-pa55w0rD
 
 production:
   <<: *default
   database: locationeer_production
-  username: test_name
-  password: test_pa55w0rD
+  username: test
+  password: +e5+-pa55w0rD
