@@ -3,21 +3,26 @@ box: wercker/ruby
 services:
     - wercker/mysql
 
+# Build definition
+# See the Ruby section on the wercker devcenter:
+# http://devcenter.wercker.com/articles/languages/ruby.html
 build:
+  # The steps that will be executed on build
     steps:
         - rails-database-yml:
             service: mysql
 
+        # A step that executes `bundle install` command
+        - bundle-install
+
+        # A custom script step, name value is used in the UI
+        # and the code value contains the command that get executed
         - script:
             name: echo ruby information
             code: |
               echo "ruby version $(ruby --version) running"
               echo "from location $(which ruby)"
               echo -p "gem list: $(gem list)"
-
-        - script:
-            name: fix nokogiri build
-            code: bundle config build.nokogiri --use-system-libraries
 
         - script:
             name: set nodejs emvironment
@@ -27,7 +32,9 @@ build:
               sudo apt-get update
               sudo apt-get -y install nodejs npm
 
-        - bundle-install
+        - script:
+            name: fix nokogiri build
+            code: bundle config build.nokogiri --use-system-libraries
 
         - script:
             name: Set up database
