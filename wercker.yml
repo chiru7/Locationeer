@@ -62,7 +62,7 @@ build:
 
         - script:
             name: Set up database
-            code: RAILS_ENV=locationeer_test bundle exec rake db:schema:load
+            code: RAILS_ENV=test bundle exec rake db:schema:load
 
         - script:
             name: rspec
