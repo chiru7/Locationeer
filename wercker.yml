@@ -16,6 +16,15 @@ box: wercker/ruby
 # This is the build pipeline. Pipelines are the core of wercker
 # Read more about pipelines on our dev center
 # http://devcenter.wercker.com/docs/pipelines/index.html
+
+services:
+  - id: mysql
+    env:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: test_name
+      MYSQL_PASSWORD: test_pa55w0rD
+      MYSQL_DATABASE: locationeer_test 
+
 build:
     steps:
         - script:
