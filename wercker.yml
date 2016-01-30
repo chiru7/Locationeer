@@ -23,7 +23,7 @@ services:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_USER: test_name
       MYSQL_PASSWORD: test_pa55w0rD
-      MYSQL_DATABASE: locationeer_test 
+      MYSQL_DATABASE: locationeer_test
 
 build:
     steps:
@@ -49,9 +49,10 @@ build:
         - script:
             name: set nodejs emvironment
             code: |
+              node --version
               sudo apt-get update
               sudo apt-get -y install nodejs npm
-              sudo update-alternatives --install /usr/bin/node node /usr/bin/nodejs 10
+              sudo npm install
 
         - bundle-install
 
