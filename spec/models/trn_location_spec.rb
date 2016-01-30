@@ -41,4 +41,23 @@ RSpec.describe TrnLocation, type: :model do
     end
   end
 
+  describe "error test longitude_up method" do
+    before do
+      trnLocation = TrnLocation.new
+      trnLocation.latitude = 1
+      trnLocation.longitude = 10
+      trnLocation.save
+      @location = TrnLocation.where("longitude = ?", 10).first
+    end
+    context "error case." do
+      it "not null" do
+        expect(@location.longitude_up).to be_nil
+      end
+      it "longitude_up値の比較" do
+        result_val = @location.longitude_up
+        expect(result_val).to eq(200)
+      end
+    end
+  end
+
 end
