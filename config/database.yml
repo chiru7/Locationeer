@@ -49,3 +49,13 @@ production:
   database: locationeer_production
   username: test
   password: +e5+-pa55w0rD
+
+wercker:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  socket: /tmp/mysql.sock
+  database: locationeer_test
+  username: test
+  password: +e5+-pa55w0rD

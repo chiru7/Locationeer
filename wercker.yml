@@ -25,6 +25,13 @@ build:
               echo -p "gem list: $(gem list)"
 
         - script:
+            name: echo ruby information
+            code: |
+              echo "ruby version $(ruby --version) running"
+              echo "from location $(which ruby)"
+              echo -p "gem list: $(gem list)"
+
+        - script:
             name: set node emvironment
             code: |
               echo "node version $(node -v) running"
@@ -38,8 +45,14 @@ build:
 
         - script:
             name: Set up database
-            code: RAILS_ENV=test bundle exec rake db:schema:load
+            code: RAILS_ENV=wercker bundle exec rake db:schema:load
 
         - script:
             name: rspec
             code: bundle exec rspec
+
+    after-steps:
+        # notify to Slack
+        - wantedly/pretty-slack-notify:
+            webhook_url: $SLACK_WEBHOOK_URL
+            channel: notification
