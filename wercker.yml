@@ -18,6 +18,10 @@ build:
         - rails-database-yml:
             service: mysql
 
+        - script:
+            name: fix nokogiri build
+            code: bundle config build.nokogiri --use-system-libraries
+
         # A step that executes `bundle install` command
         - bundle-install
 
@@ -31,11 +35,10 @@ build:
               echo -p "gem list: $(gem list)"
 
         - script:
-            name: echo ruby information
+            name: echo rails information
             code: |
-              echo "ruby version $(ruby --version) running"
-              echo "from location $(which ruby)"
-              echo -p "gem list: $(gem list)"
+              echo "rails version $(rails --version) running"
+              echo "from location $(which rails)"
 
         - script:
             name: set node emvironment
@@ -44,10 +47,6 @@ build:
               echo "npm version $(npm -v) running"
               sudo apt-get update
               sudo apt-get -y install nodejs npm
-
-        - script:
-            name: fix nokogiri build
-            code: bundle config build.nokogiri --use-system-libraries
 
         - script:
             name: Set up database
