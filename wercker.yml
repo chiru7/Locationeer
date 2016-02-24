@@ -3,6 +3,11 @@ box: ruby
 services:
   - id: mysql
     tag: 5.6
+    env:
+      MYSQL_ROOT_PASSWORD: +e5+-pa55w0rD
+      MYSQL_USER: test
+      MYSQL_PASSWORD: +e5+-pa55w0rD
+      MYSQL_DATABASE: locationeer_test
 
 # Build definition
 # See the Ruby section on the wercker devcenter:
