@@ -16,20 +16,14 @@ build:
   # The steps that will be executed on build
     steps:
 
-      - script:
-        name: delete docker images cache
-        code: |
-          rm -rf $WERCKER_CACHE_DIR
-
-        - rails-database-yml:
-            service: mysql
-
         - script:
             name: fix nokogiri build
             code: bundle config build.nokogiri --use-system-libraries
 
         # A step that executes `bundle install` command
         - bundle-install
+
+        - rails-database-yml
 
         # A custom script step, name value is used in the UI
         # and the code value contains the command that get executed
