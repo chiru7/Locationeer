@@ -49,9 +49,9 @@ build:
               sudo apt-get update
               sudo apt-get -y install nodejs npm
 
-        # - script:
-        #     name: Set up database
-        #     code: RAILS_ENV=test bundle exec rake db:schema:load
+        - script:
+            name: Set up database
+            code: RAILS_ENV=test bundle exec rake db:schema:load
 
         - script:
             name: rspec
