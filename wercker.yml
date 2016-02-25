@@ -24,7 +24,7 @@ build:
         - bundle-install
 
         - rails-database-yml:
-            service: mysql
+            service: mysql-docker
 
         # A custom script step, name value is used in the UI
         # and the code value contains the command that get executed
